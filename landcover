@@ -1293,13 +1293,14 @@ var l8raw = ee.ImageCollection("LANDSAT/LC08/C02/T1"),
               "system:index": "36"
             })]);
 /***** End of imports. If edited, may not auto-convert in the playground. *****/
-// select region of interest and adjust the display frame
+
+// select region of interest and adjust the display frame on init
 var countries = ee.FeatureCollection("USDOS/LSIB_SIMPLE/2017");
 var roi = countries.filter(ee.Filter.eq('country_na', 'United Kingdom'));
 Map.addLayer(roi, {}, 'United Kingdom', false);
 Map.centerObject(roi, 5);
 
-// remove clouds from roi
+// remove clouds
 var image = ee.Algorithms.Landsat.simpleComposite({
   collection: l8raw.filterDate('2020-01-01', '2020-12-31'),
   asFloat: true
@@ -1308,13 +1309,12 @@ var image = ee.Algorithms.Landsat.simpleComposite({
 var trueColorVis = {min: 0, max: 0.3, bands: ['B4', 'B3', 'B2']};
 Map.addLayer(image.clip(roi), trueColorVis, "composite");
 
-// training data
+// define training data
 var label = "Class";
 var bands = ['B1', 'B2', 'B3', 'B4', 'B5', 'B7'];
 var input = image.select(bands);
 
-// 0 -> water, 1 -> urban, 2 -> crop, 3 -> forest, 4 -> barren
-
+// classes: 0 -> water, 1 -> urban, 2 -> crop, 3 -> forest, 4 -> barren
 var training = Urban.merge(Crop).merge(Water).merge(Forest).merge(Barren);
 
 // overlay points on landsat image
@@ -1323,8 +1323,8 @@ var trainImage = input.sampleRegions({
   properties: [label],
   scale: 30
 });
-print(trainImage);
 
+// 80% trainset 20% testset data distribution
 var trainingData = trainImage.randomColumn();
 var trainSet = trainingData.filter(ee.Filter.lessThan('random', 0.8));
 var testSet = trainingData.filter(ee.Filter.greaterThanOrEquals('random', 0.8));
@@ -1337,10 +1337,11 @@ var classified = input.classify(classifier);
 
 // visualization
 var landcoverPalette = [
-  'blue',
-  'red',
-  'lightgreen',
-  'darkgreen',
-  'grey',
+  'blue', //water
+  'red', //urban
+  'lightgreen', //crop
+  'darkgreen', //forest
+  'grey', //barren
 ];
+
 Map.addLayer(classified.clip(roi), {palette: landcoverPalette, min: 0, max: 4}, 'Classification');
