@@ -9,10 +9,10 @@ especially well. Cities and barren land appear similar visibly, so there are a l
 highlands and city sprawl.
 
 The complete breakdown of sample distribution is:
-35 water samples
-41 urban samples
-53 crop samples
-46 forest samples
-37 barren samples
+35 water samples,
+41 urban samples,
+53 crop samples,
+46 forest samples,
+and 37 barren samples.
 
 More detail can be found in the associated js file, or by accessing the app itself: https://goldpapaya.users.earthengine.app/view/uk-land-cover-classification.
