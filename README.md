@@ -21,4 +21,4 @@ The complete breakdown of sample distribution is:
 46 forest samples,
 and 37 barren samples.
 
-More detail can be found in the associated js file, or by accessing the app itself: https://goldpapaya.users.earthengine.app/view/uk-land-cover-classification.
+More detail can be found in the associated file, or by accessing the app itself: https://goldpapaya.users.earthengine.app/view/uk-land-cover-classification.
