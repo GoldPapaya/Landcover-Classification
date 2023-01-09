@@ -10,7 +10,7 @@ Actual             |  Predication
   
 </div>
 
-Dispite a tiny amount of sample data, the product looks very good! Observe that crops, forests, and water are represented
+Dispite using only a tiny amount of sample data, the product looks very good! Observe that crops, forests, and water are represented
 especially well. Cities and barren land appear similar visibly, so there are a lot of expected errors around the Scottish 
 highlands and city sprawl.
 
