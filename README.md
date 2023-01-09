@@ -2,8 +2,8 @@
 This app uses supervised machine learning to seperate and visualize terrain classes of the UK in EarthEngine. 
 I manually selected 212 points in the UK to train the model (full breakdown below), and the result looks spectacular!
 
-<img align="center" src="https://user-images.githubusercontent.com/93890310/211419188-874eb938-5bc6-4e72-94b8-ed5d4d041c2b.png">
-<img align="center" src="https://user-images.githubusercontent.com/93890310/211421394-2c287362-0006-45dd-9579-48c92658ed06.png">
+![Screenshot_2](https://user-images.githubusercontent.com/93890310/211421702-d31d4ea9-7535-4f59-9db2-17c8626d67c8.png)
+![Screenshot_3](https://user-images.githubusercontent.com/93890310/211421713-4515eaa9-7154-4810-b407-7e23d608c338.png)
 
 Dispite a tiny amount of sample data, the product looks very good! Observe that crops, forests, and water are represented
 especially well. Cities and barren land appear similar visibly, so there are a lot of expected errors around the Scottish 
