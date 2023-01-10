@@ -1,5 +1,5 @@
 # Landcover-Classification
-This app uses supervised machine learning to seperate and visualize terrain classes of the UK in Google EarthEngine. 
+This app uses supervised machine learning to seperate and visualize terrain classes of the UK in Google Earth Engine. 
 I selected 212 points in the UK to train the model (full breakdown below), and the result looks great!
 
 <div align="center">
