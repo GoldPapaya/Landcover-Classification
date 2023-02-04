@@ -24,3 +24,5 @@ and 37 barren samples.
 Feel free to play around with the samples/add your own! Also feel free to modify the code and use it however you want, I don't mind! Just be sure to abide by Google Earth Engine policies for making applications. This app was made for educational purposes.
 
 More detail can be found in the associated file, or by accessing the app itself: https://goldpapaya.users.earthengine.app/view/uk-land-cover-classification.
+
+NOTE: it might take a minute to generate the model in the app, if this happens just wait a minute and it should appear.
