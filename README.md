@@ -1,6 +1,6 @@
 # Landcover-Classification
 This app uses supervised machine learning to seperate and visualize terrain classes of the UK in Google Earth Engine. 
-I selected 212 points in the UK to train the model (full breakdown below), and the result looks great!
+I manually selected 212 points in the UK to train the model (full breakdown below), and the result is... well... judge for yourself.
 
 <div align="center">
   
@@ -10,7 +10,7 @@ Actual             |  Model
   
 </div>
 
-Dispite using only a tiny amount of sample data, the product looks very good! Observe that crops, forests, and water are represented
+Dispite using only a small amount of sample data, the product seems reasonable. Observe that crops, forests, and water are represented
 especially well. Cities and barren land appear similar visibly, so there are a lot of expected errors around the Scottish 
 highlands and city sprawl.
 
@@ -25,4 +25,4 @@ Feel free to play around with the samples/add your own! Also feel free to modify
 
 More detail can be found in the associated file, or by accessing the app itself: https://goldpapaya.users.earthengine.app/view/uk-land-cover-classification.
 
-NOTE: it might take a minute to generate the model in the app, if this happens just wait a minute and it should appear.
+NOTE: it might take a minute to generate the model in the app, if this happens just wait a minute and it will appear.
