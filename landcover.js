@@ -1294,13 +1294,13 @@ var l8raw = ee.ImageCollection("LANDSAT/LC08/C02/T1"),
             })]);
 /***** End of imports. If edited, may not auto-convert in the playground. *****/
 
-// select region of interest and adjust the display frame on init
+// Select region of interest and adjust the display frame on init
 var countries = ee.FeatureCollection("USDOS/LSIB_SIMPLE/2017");
 var roi = countries.filter(ee.Filter.eq('country_na', 'United Kingdom'));
 Map.addLayer(roi, {}, 'United Kingdom', false);
 Map.centerObject(roi, 5);
 
-// remove clouds
+// Remove clouds
 var image = ee.Algorithms.Landsat.simpleComposite({
   collection: l8raw.filterDate('2020-01-01', '2020-12-31'),
   asFloat: true
@@ -1309,15 +1309,15 @@ var image = ee.Algorithms.Landsat.simpleComposite({
 var trueColorVis = {min: 0, max: 0.3, bands: ['B4', 'B3', 'B2']};
 Map.addLayer(image.clip(roi), trueColorVis, "composite");
 
-// define training data
+// Define training data
 var label = "Class";
 var bands = ['B1', 'B2', 'B3', 'B4', 'B5', 'B7'];
 var input = image.select(bands);
 
-// classes: 0 -> water, 1 -> urban, 2 -> crop, 3 -> forest, 4 -> barren
+// Classes: 0 -> water, 1 -> urban, 2 -> crop, 3 -> forest, 4 -> barren
 var training = Urban.merge(Crop).merge(Water).merge(Forest).merge(Barren);
 
-// overlay points on landsat image
+// Overlay points on landsat image
 var trainImage = input.sampleRegions({
   collection: training,
   properties: [label],
@@ -1329,13 +1329,13 @@ var trainingData = trainImage.randomColumn();
 var trainSet = trainingData.filter(ee.Filter.lessThan('random', 0.8));
 var testSet = trainingData.filter(ee.Filter.greaterThanOrEquals('random', 0.8));
 
-// classification model
+// Classification model
 var classifier = ee.Classifier.smileCart().train(trainSet, label, bands);
 
-// classify landsat image
+// Classify landsat image
 var classified = input.classify(classifier);
 
-// visualization
+// Visualization
 var landcoverPalette = [
   'blue', //water
   'red', //urban
